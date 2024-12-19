@@ -40,7 +40,7 @@
                         </div>
 
                         <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Which is your preferred brand of cigarettes?</label>
-                        <select id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="brand" class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Select a brand</option>
                             <option value="MA">Marlboro</option>
                             <option value="CH">Chesterfield</option>
@@ -51,7 +51,7 @@
                         <br>
 
                         <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What is your preferred variety of cigarette?</label>
-                        <select id="variety" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="variety" class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Select a type</option>
                             <option value="RE">Regular</option>
                             <option value="ST">Strong</option>
