@@ -44,28 +44,32 @@
 
                         <!-- <br> -->
                         @foreach($form as $f)
-                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
 
                         @if($f['type'] === 'brand')
+                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
+
                         <select name="brand" onchange="this.form.submit()" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>--- Select brand ---</option>
+                            <option selected disabled>--- Select brand ---</option>
                             @foreach($brands as $brand => $varieties)
                             <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
                                 {{ $brand }}
                             </option>
                             @endforeach
                         </select>
+
                         @elseif($f['type'] === 'variety' && $selectedBrand)
+                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
                         <select name="variety" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="">--- Select variety --- </option>
+                            <option selected disabled>--- Select variety --- </option>
                             @foreach($brands[$selectedBrand] as $variety)
                             <option value="{{  $variety }}">{{ $variety }}</option>
                             @endforeach
                         </select>
-                        @elseif($f['type'] === 'alternative' && $selectedBrand)
+                        @elseif($f['type'] === 'alternative')
+                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
                         <select name="brand" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>--- Select brand ---</option>
-                        <option value="none" {{ request('brand') == 'none' ? 'selected' : '' }}>None</option> <!-- Add "None" option -->    
+                            <option selected disabled>--- Select brand ---</option>
+                            <option value="none" {{ request('brand') == 'none' ? 'selected' : '' }}>None</option> <!-- Add "None" option -->
                             @foreach($brands as $brand => $varieties)
                             @if($brand != $selectedBrand) <!-- Exclude the selected brand -->
                             <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
@@ -75,25 +79,25 @@
                             @endforeach
                         </select>
                         @elseif($f['type'] === 'purchase')
-                            <div class="flex items-center">
-                                <div>
-                                    <label class="inline-flex items-center mr-4">
-                                        <input type="radio" name="purchase" value="true" required class="form-radio text-blue-500">
-                                        <span class="ml-2">Yes</span>
-                                    </label>
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" name="purchase" value="false" required class="form-radio text-red-500">
-                                        <span class="ml-2">No</span>
-                                    </label>
-                                </div>
+                        <div class="flex items-center">
+                            <div>
+                                <label class="inline-flex items-center mr-4">
+                                    <input type="radio" name="purchase" value="true" required class="form-radio text-blue-500">
+                                    <span class="ml-2">Yes</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="purchase" value="false" required class="form-radio text-red-500">
+                                    <span class="ml-2">No</span>
+                                </label>
                             </div>
+                        </div>
                         @endif
                         <br>
                         @endforeach
 
 
                         <br>
-                        <!-- <br> -->
+                        <!-- Checkbox Agreement -->
                         <div class="flex items-start mb-6">
                             <div class="flex items-center h-5">
                                 <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
@@ -101,9 +105,14 @@
                             <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
                         </div>
 
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <!-- Submit Button -->
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Submit</button>
 
-
+                        <!-- Reset Button -->
+                        <button type="reset" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                            Reset
+                        </button>
                     </form>
 
 
