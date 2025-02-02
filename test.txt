@@ -1,0 +1,5 @@
+@foreach($forms as $question)
+    <h1>{{ $question }}</h1>
+    @if($condition)
+    @endif
+@endforeach

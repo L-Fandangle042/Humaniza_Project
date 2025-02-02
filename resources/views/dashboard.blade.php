@@ -13,6 +13,7 @@
                 </div>
                 <h1 class="px-10 text-3xl">Form</h1>
                 <div>
+
                     <form class="p-10">
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
                             <div>
@@ -61,6 +62,30 @@
                         </select>
 
                         <br>
+
+                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Which alternative brand do you prefer?</label>
+                        <select id="brand" class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">    
+                        <option selected>Select a brand</option>
+                        <option value="NA">None</option>    
+                        <option value="MA">Marlboro</option>
+                            <option value="CH">Chesterfield</option>
+                            <option value="LU">Lucky Strike</option>
+                            <option value="CA">Camel</option>
+                            <option value="WI">Winston</option>
+                        </select>
+                        <br>
+
+                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What alternative variety do you prefer?</label>
+                        <select id="variety" class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Select a type</option>
+                            <option value="RE">Regular</option>
+                            <option value="ST">Strong</option>
+                            <option value="LI">Light</option>
+                            <option value="ME">Menthol</option>
+                            <option value="OT">Other</option>
+                        </select>
+
+                        <br>
                         <br>
                         <div class="flex items-start mb-6">
                             <div class="flex items-center h-5">
@@ -73,6 +98,8 @@
 
 
                     </form>
+
+                
                     <!-- <form method="POST">
                         @csrf
                         <h3>Question 1: What is your favorite brand of cigarettes?</h3>
@@ -85,3 +112,6 @@
         </div>
     </div>
 </x-app-layout>
+
+
+                    
