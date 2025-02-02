@@ -6,15 +6,22 @@ use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
-    public function form() {
+    public function form(Request $request) {
+        $brands = [
+            'Marlboro' => ['Gold', 'Red', 'Touch', 'Silver', 'Menthol'],
+            'Chesterfield' => ['Red', 'Blue', 'Menthol'],
+            'Lucky Strike' => ['Blue', 'Red', 'Wild', 'White', 'Amber']
+        ];
+        
+        $selectedBrand = $request->input('brand');
+
         $form = [
-            ['question1' => 'Which is your preferred brand of cigarettes?'],
-            ['question2' => 'What is your preferred variety of cigarette?']
+            ['question' => 'Which is your preferred brand of cigarettes?', 'type' => 'brand'],
+            ['question' => 'What is your preferred variety of cigarette?', 'type' => 'variety'],
+            ['question' => 'Which alternative brand do you prefer?', 'type' => 'alternative'],
+            ['question' => 'Did you buy the preferred brand?', 'type' => 'purchase']
         ];
 
-        return view(
-            'dashboard', 
-            ['form' => $form]
-        );
+        return view('dashboard', compact('form', 'brands', 'selectedBrand')); // ['form' => $form]
     } 
 }
