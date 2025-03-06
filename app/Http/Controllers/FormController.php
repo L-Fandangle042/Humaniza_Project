@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
     public function form(Request $request) {
+
+        $question = new Question();
+        $question->question = "this is a test question";
+        $question->type = "example type";
+        $question->create();
+
+
         $brands = [
             'Chesterfield' => ['Red', 'Blue', 'Menthol'],
             'Fortuna' => ['Original Soft', ' Line', 'Dark Green Menthol', 'Red', 'Blue'],
