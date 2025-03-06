@@ -9,11 +9,12 @@ class FormController extends Controller
 {
     public function form(Request $request) {
 
-        $question = new Question();
-        $question->question = "this is a test question";
-        $question->type = "example type";
-        $question->create();
+        // $question = new Question();
+        // $question->question = "this is a test question";
+        // $question->type = "example type";
+        // $question->create();
 
+        $questions = Question::all()->toArray();
 
         $brands = [
             'Chesterfield' => ['Red', 'Blue', 'Menthol'],
@@ -32,6 +33,6 @@ class FormController extends Controller
             ['question' => 'Did you buy the preferred brand?', 'type' => 'purchase']
         ];
 
-        return view('dashboard', compact('form', 'brands', 'selectedBrand')); // ['form' => $form]
+        return view('dashboard', compact('questions', 'brands', 'selectedBrand')); // ['form' => $form]
     } 
 }

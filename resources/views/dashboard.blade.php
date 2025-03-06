@@ -43,56 +43,56 @@
                         </div>
 
                         <!-- <br> -->
-                        @foreach($form as $f)
+                        @foreach($questions as $q)
 
-                        @if($f['type'] === 'brand')
-                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
+                            @if($q['type'] === 'brand')
+                            <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
 
-                        <select name="brand" onchange="this.form.submit()" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected disabled>--- Select brand ---</option>
-                            @foreach($brands as $brand => $varieties)
-                            <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
-                                {{ $brand }}
-                            </option>
-                            @endforeach
-                        </select>
+                            <select name="brand" onchange="this.form.submit()" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>--- Select brand ---</option>
+                                @foreach($brands as $brand => $varieties)
+                                <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
+                                    {{ $brand }}
+                                </option>
+                                @endforeach
+                            </select>
 
-                        @elseif($f['type'] === 'variety' && $selectedBrand)
-                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
-                        <select name="variety" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected disabled>--- Select variety --- </option>
-                            @foreach($brands[$selectedBrand] as $variety)
-                            <option value="{{  $variety }}">{{ $variety }}</option>
-                            @endforeach
-                        </select>
-                        @elseif($f['type'] === 'alternative')
-                        <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $f['question'] }}</label>
-                        <select name="brand" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected disabled>--- Select brand ---</option>
-                            <option value="none" {{ request('brand') == 'none' ? 'selected' : '' }}>None</option> <!-- Add "None" option -->
-                            @foreach($brands as $brand => $varieties)
-                            @if($brand != $selectedBrand) <!-- Exclude the selected brand -->
-                            <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
-                                {{ $brand }}
-                            </option>
-                            @endif
-                            @endforeach
-                        </select>
-                        @elseif($f['type'] === 'purchase')
-                        <div class="flex items-center">
-                            <div>
-                                <label class="inline-flex items-center mr-4">
-                                    <input type="radio" name="purchase" value="true" required class="form-radio text-blue-500">
-                                    <span class="ml-2">Yes</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="purchase" value="false" required class="form-radio text-red-500">
-                                    <span class="ml-2">No</span>
-                                </label>
+                            @elseif($q['type'] === 'variety' && $selectedBrand)
+                            <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
+                            <select name="variety" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>--- Select variety --- </option>
+                                @foreach($brands[$selectedBrand] as $variety)
+                                <option value="{{  $variety }}">{{ $variety }}</option>
+                                @endforeach
+                            </select>
+                            @elseif($q['type'] === 'alternative')
+                            <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
+                            <select name="brand" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>--- Select brand ---</option>
+                                <option value="none" {{ request('brand') == 'none' ? 'selected' : '' }}>None</option> <!-- Add "None" option -->
+                                @foreach($brands as $brand => $varieties)
+                                @if($brand != $selectedBrand) <!-- Exclude the selected brand -->
+                                <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
+                                    {{ $brand }}
+                                </option>
+                                @endif
+                                @endforeach
+                            </select>
+                            @elseif($q['type'] === 'purchase')
+                            <div class="flex items-center">
+                                <div>
+                                    <label class="inline-flex items-center mr-4">
+                                        <input type="radio" name="purchase" value="true" required class="form-radio text-blue-500">
+                                        <span class="ml-2">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="purchase" value="false" required class="form-radio text-red-500">
+                                        <span class="ml-2">No</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                        @endif
-                        <br>
+                            @endif
+                            <br>
                         @endforeach
 
 
