@@ -9,11 +9,6 @@ class FormController extends Controller
 {
     public function form(Request $request) {
 
-        // $question = new Question();
-        // $question->question = "this is a test question";
-        // $question->type = "example type";
-        // $question->create();
-
         $questions = Question::all()->toArray();
 
         $brands = [
@@ -25,13 +20,6 @@ class FormController extends Controller
                     ];
         
         $selectedBrand = $request->input('brand');
-
-        $form = [
-            ['question' => 'Which is your preferred brand of cigarettes?', 'type' => 'brand'],
-            ['question' => 'What is your preferred variety of cigarette?', 'type' => 'variety'],
-            ['question' => 'Which alternative brand do you prefer?', 'type' => 'alternative'],
-            ['question' => 'Did you buy the preferred brand?', 'type' => 'purchase']
-        ];
 
         return view('dashboard', compact('questions', 'brands', 'selectedBrand')); // ['form' => $form]
     } 
