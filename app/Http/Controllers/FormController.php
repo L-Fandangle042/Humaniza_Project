@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Models\Brand;
 
 class FormController extends Controller
 {
@@ -11,13 +12,7 @@ class FormController extends Controller
 
         $questions = Question::all()->toArray();
 
-        $brands = [
-            'Chesterfield' => ['Red', 'Blue', 'Menthol'],
-            'Fortuna' => ['Original Soft', ' Line', 'Dark Green Menthol', 'Red', 'Blue'],
-            'Lucky Strike' => ['Blue', 'Red', 'Wild', 'White', 'Amber'],
-            'Marlboro' => ['Gold', 'Red', 'Touch', 'Silver', 'Menthol'],
-            'Winston' => ['Classic Soft', 'Blue', 'Silver', 'Expression Duo', 'Compact Impulse']
-                    ];
+        $brands = Brand::all()->toArray();
         
         $selectedBrand = $request->input('brand');
 
