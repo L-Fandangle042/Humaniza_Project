@@ -43,6 +43,11 @@
                         </div>
 
                         <!-- <br> -->
+<!-- 
+                        @foreach($brands as $brand)
+                            <pre>{{ json_encode($brand, JSON_PRETTY_PRINT) }}</pre>
+                        @endforeach -->
+                        
                         @foreach($questions as $q)
                             @if($q['type'] === 'brand')
                             <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
@@ -51,8 +56,7 @@
                                 <option selected disabled>--- Select brand ---</option>
                                 @foreach($brands as $brand => $varieties)
                                 <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
-                                    <!-- This is the new line! -->
-                                    {{ $brand['brand'] }}
+                                    {{ $brand}}
                                 </option>
                                 @endforeach
                             </select>
@@ -62,9 +66,10 @@
                             <select name="variety" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected disabled>--- Select variety --- </option>
                                 @foreach($brands[$selectedBrand] as $variety)
-                                <option value="{{  $variety }}">{{ $variety }}</option>
+                                    <option value="{{  $variety }}">{{ $variety }}</option>
                                 @endforeach
                             </select>
+
                             @elseif($q['type'] === 'alternative')
                             <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
                             <select name="brand" required class="bg-gray-50 border border-gray-350 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -78,7 +83,9 @@
                                 @endif
                                 @endforeach
                             </select>
+
                             @elseif($q['type'] === 'purchase')
+                            <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
                             <div class="flex items-center">
                                 <div>
                                     <label class="inline-flex items-center mr-4">
@@ -107,7 +114,8 @@
 
                         <!-- Submit Button -->
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Submit</button>
+                            Submit
+                        </button>
 
                         <!-- Reset Button -->
                         <button type="reset" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">

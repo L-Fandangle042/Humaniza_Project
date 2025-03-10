@@ -12,10 +12,15 @@ class FormController extends Controller
 
         $questions = Question::select('question', 'type')->get()->toArray();
 
-        $brands = Brand::select('brand', 'variety')->get()->toArray();
+        $brands = Brand::select('brand', 'variety')->get()
+            ->groupBy('brand')
+            ->map(function ($items) {
+                return $items->pluck('variety')->toArray();
+            })
+            ->toArray();
         
         $selectedBrand = $request->input('brand');
 
-        return view('dashboard', compact('questions', 'brands', 'selectedBrand')); // ['form' => $form]
+        return view('dashboard', compact('questions', 'brands', 'selectedBrand'));
     } 
 }
