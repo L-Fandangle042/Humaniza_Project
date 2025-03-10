@@ -44,7 +44,6 @@
 
                         <!-- <br> -->
                         @foreach($questions as $q)
-
                             @if($q['type'] === 'brand')
                             <label for="variety" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $q['question'] }}</label>
 
@@ -52,7 +51,8 @@
                                 <option selected disabled>--- Select brand ---</option>
                                 @foreach($brands as $brand => $varieties)
                                 <option value="{{ $brand }}" {{ request('brand') == $brand ?  'selected' : '' }}>
-                                    {{ $brand }}
+                                    <!-- This is the new line! -->
+                                    {{ $brand['brand'] }}
                                 </option>
                                 @endforeach
                             </select>
