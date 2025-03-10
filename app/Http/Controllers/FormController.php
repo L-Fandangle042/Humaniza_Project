@@ -10,9 +10,9 @@ class FormController extends Controller
 {
     public function form(Request $request) {
 
-        $questions = Question::all()->toArray();
+        $questions = Question::select('question', 'type')->get()->toArray();
 
-        $brands = Brand::all()->toArray();
+        $brands = Brand::select('brand', 'variety')->get()->toArray();
         
         $selectedBrand = $request->input('brand');
 
